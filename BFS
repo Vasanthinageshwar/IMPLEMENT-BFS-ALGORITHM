@@ -1,0 +1,45 @@
+IMPLEMENT BFS ALGORITHM
+CODE:
+
+#include<stdio.h>;
+
+int a[20][20],q[20],visited[20],n,i,j,f=0,r=-1;
+void bfs(int v) {
+
+for (i=1;i&lt;=n;i++)
+if(a[v][i] &amp;&amp; !visited[i])
+q[++r]=i;
+if(f&lt;=r) {
+
+visited[q[f]]=1;
+bfs(q[f++]);
+
+}
+
+}
+void main() {
+int v;
+printf(&quot;\n Enter the number of vertices:&quot;);
+scanf(&quot;%d&quot;,&amp;n);
+for (i=1;i&lt;=n;i++) {
+q[i]=0;
+visited[i]=0;
+
+}
+printf(&quot;\n Enter graph data in matrix form:\n&quot;);
+
+for (i=1;i&lt;=n;i++)
+for (j=1;j&lt;=n;j++)
+scanf(&quot;%d&quot;,&amp;a[i][j]);
+
+printf(&quot;\n Enter the starting vertex:&quot;);
+scanf(&quot;%d&quot;,&amp;v);
+bfs(v);
+printf(&quot;\n The node which are reachable are:\n&quot;);
+for (i=1;i&lt;=n;i++) {
+if(visited[i])
+printf(&quot;%d\t&quot;,i);
+else
+printf(&quot;\n BFS is not possible&quot;); }
+
+}
